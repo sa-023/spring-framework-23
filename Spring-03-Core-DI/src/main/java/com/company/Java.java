@@ -18,7 +18,6 @@ import org.springframework.stereotype.Component;
  *   3. Injecting the value through setter.
  *
  */
-
 @Component
 @AllArgsConstructor
 public class Java {

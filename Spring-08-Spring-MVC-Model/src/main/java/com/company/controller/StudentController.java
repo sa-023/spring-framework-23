@@ -19,7 +19,7 @@ import java.util.Random;
  * · The response sent back to the client.
  *
  * 🦋 Model
- * · The Model works a container that contains the data of the application.
+ * · The Model works as a container that contains the data of the application.
  * · In controller, any data can be added (strings, objects, from database, etc...)
  * · View page can access data from model.
  *

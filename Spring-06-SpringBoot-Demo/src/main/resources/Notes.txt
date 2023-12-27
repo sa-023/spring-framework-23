@@ -4,7 +4,7 @@
 · src/test/java: Contains test code
 · mvnw and mwnw.cmd: These are maven wrapper scrips. You can use these scripts to build your project, even if you do not have Maven installed on your machine.
 · pom.xml: This is the Maven build specification.
-· CompanyApplication.java: This is the Spring boot main class that bootstrapts the project.
+· CompanyApplication.java: This is the Spring boot main class that bootstraps(loads) the project.
 · application.properties: This file initially empty but offers a place where you can specify configuration properties.
 · static package: Contains any static content(images,css,js,etc)
 · templates package: Contains template files that will be used to render content to the browser(Thymeleaf)
@@ -37,17 +37,20 @@ BootStrapping the application :
      configure any components that it thinks we will need.
   3. @ComponentScan: Enables component scanning. This lets you declare other classes with annotations like @Component
      to have Spring automatically discover and register them as components in the Spring application context.
+
 · main() method: calls a static run method on the SpringApplication class, which performs the actual bootstrapping of the application,
   creating the Spring application context. The two parameters passed to the run() method are a configuration class and the command-line arguments.
 
 
 
-
-
-
-
-
-
+🖍️...
+· Archetype is a project skeleton (package structure).
+· New project: jar -> server included, war -> server not included.
+· A web server is software and hardware that stores and delivers the content for a website – such as text, images, video, and application data – to clients that request it.
+  A web server communicates with a web browser (client) using the Hypertext Transfer Protocol (HTTP).
+· HTTP (Hypertext Transfer Protocol) is the set of rules for transferring files -- such as text, images, sound, video and other multimedia files.
+· Client (web browser) and server side communicates with each other with HTTP.
+· A port is a virtual point where network connections start and end. The default port for the HTTP protocol is 80 and the default port for the HTTPS protocol is 443.
 
 
 

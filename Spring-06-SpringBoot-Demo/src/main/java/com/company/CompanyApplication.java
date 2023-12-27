@@ -10,7 +10,7 @@ import org.springframework.context.ApplicationContext;
  * 🦋 Spring Boot and key features:
  * · Standalone applications: Spring Boot helps create apps that aren't tied to a specific platform and that can run
  *   locally on a device without an internet connection or other installed services to be functional.
- * · Embedded servers: Spring Boot comes with built-in HTTP (Hypertext Transfer Protocol) servers like Tomcat and Jetty.
+ * · Embedded servers: Applications run on the server. Spring Boot comes with built-in HTTP (Hypertext Transfer Protocol) servers like Tomcat and Jetty.
  * · Opinionated approach: Spring Boot simplifies build configurations by providing opinionated starter dependencies.
  * · Autoconfiguration: Spring Boot automatically configures Spring and other third-party libraries whenever possible.
  *

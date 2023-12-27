@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * · A servlet is a Java Object which directly interacts with the Servlet Container.
  * · Servlet Container is a translator of the HTTP messages for our Java app.
  * · Servlet Container has a context of servlet instances it controls, just as Spring does with its beans.
- * · Tomcat is called a ‘Servlet Container’.
+ * · Tomcat is a 'Servlet Container' (Web Container), which simply contains servlets and manages their lifecycle.
  * · We do not create servlet instances. Servlet is the entry point to our app’s logic. It is the component the Servlet Container (Tomcat) directly interacts with.
  *
  * 🦋 Spring MVC (Model, View, Controller) Architecture:
@@ -24,6 +24,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * 7. Dispatcher Servlet returns in the HTTP response the rendered view.
  * 🖍️...
  * · Tomcat ←→ 1. DispatcherServlet ←→ Handler Mapping ▶︎ 2. DispatcherServlet ←→ Controller ▶︎ 3. DispatcherServlet ←→ View Resolver
+ * · Dispatcher Servlet is just a conventional name for the ordinary servlet. It's called "dispatcher" because it simply
+ *   dispatches requests to the corresponding handler servlet objects.
+ * · Dispatcher Servlet (like any other servlet) lives within the Servlet Container.
  * · DispatcherServlet is a that receives all the HTTP requests and delegates them to controller classes.
  *   Spring Boot provides the spring-boot-starter-web library for developing web applications using Spring MVC. One of the main features of Spring Boot is autoconfiguration.
  *   Spring Boot autoconfiguration registers and configures the DispatcherServlet automatically. Therefore, we don’t need to register the DispatcherServlet manually.
@@ -64,7 +67,7 @@ public class HomeController {
         return "welcome.html";
     }
 
-    @RequestMapping // If we don't provide an endpoint with @RequestMapping, it takes the default option @RequestMapping("/"), which is one slash
+    @RequestMapping // If we don't provide an endpoint with @RequestMapping, it takes the default option @RequestMapping("/"), which is single slash
     public String home3(){
         return "welcome.html";
     }

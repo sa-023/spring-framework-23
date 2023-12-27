@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<div align="center"> <!-- centering the body -->
+<body>
+<!-- Working with Forms
+· Thymeleaf form tags provides extra support
+· They support data binding, so this allows us to automatically set data and retrieve data from Java Objects and beans.
+-->
+
+<!--
+· th:action="@{/mentor/confirm}" -> When we click on the "Register (Submit)" button, it will navigate to that specific endpoint in the controller.
+· method="post" -> We send a post request to the given controller endpoint after inputting the data and by clicking the "Register (Submit)" button.
+· th:object="${mentor} -> Binding the empty mentor object into the view so the client can input the data.
+
+· When the "mentor/register" endpoint loads, we see the empty form in the view. MVC will call all the getter methods. Ex: mentor.getFirstName, etc.
+· When the "mentor/confirm" endpoint loads, it sets the inputted values. MVC will call all the setter methods. Ex: mentor.setFirstName="Mike," etc.
+-->
+<form th:action="@{/mentor/confirm}" method="post" th:object="${mentor}"> <!-- When the submit button is clicked, a post request will be sent to the mentor/confirm endpoint. -->
+
+    <label>First Name:</label>
+    <input type="text" id="firstName" th:field="*{firstName}"><br> <!-- Type is a text. Input firstName into mentor object. -->
+
+    <label>Last Name:</label>
+    <input type="text" id="lastName" th:field="*{lastName}"><br> <!-- Type is a text. Input lastName into mentor object. -->
+
+    <label>Email:</label>
+    <input type="email" id="email" th:field="*{email}"><br> <!-- Type is an email. Input email into mentor object. -->
+
+    <label>Graduated:</label>
+    <input type="checkbox" th:field="*{graduated}"><br> <!-- Type is a checkbox. -->
+
+    <label>Gender:</label>
+    <input type="radio" value="Male" th:field="*{gender}">Male <!-- Type is a radio button. Choose the option. -->
+    <input type="radio" value="Female" th:field="*{gender}">Female<br>
+
+    <label>Batch Number:</label>
+    <select th:field="*{batch}"> <!-- Type is a select drop-down. We have to specify which field will have the iteration. -->
+<!-- th:value="${eachBatch}" -> Takes the selected value and assigns it to the *{batch} field. th:text="${eachBatch}" -> Display the values on the *{batch} field. -->
+        <option th:each="eachBatch : ${batchList}" th:value="${eachBatch}" th:text="${eachBatch}"></option>
+    </select> <br>
+
+    <label>Company:</label>
+    <textarea th:field="*{company}"></textarea><br> <!-- TextBox -->
+
+    <button type="submit">Register</button> <!-- Button-->
+
+
+</form>
+
+</body>
+</div>
+
+</html>

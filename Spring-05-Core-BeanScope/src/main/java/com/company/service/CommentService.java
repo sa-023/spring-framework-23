@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 
 /*
  * 🦋 Bean Scopes
- * · Spring has multiple different approaches for creating beans and managing their lifecycle. These approaches are called “scopes”.
+ * · Spring has multiple approaches for creating beans and managing their lifecycle. These approaches are called “scopes”.
  * · The scope of beans defines how the framework manages the object instances.
  * · Spring bean scopes: · Singleton · Prototype · Request · Session etc.
  * 🔺 Singleton Scope:
@@ -50,8 +50,8 @@ public class CommentService {
     public CommentService(CommentRepository commentRepository, @Qualifier("PUSH") CommentNotificationProxy commentNotificationProxy) {
         this.commentRepository = commentRepository;
         this.commentNotificationProxy = commentNotificationProxy;
-        System.out.println("Hello"); // Test: When a container initializes, we will see "Hello" on the console if the @Lazy annotation is not used.
-                                     // @Lazy only applies to singletons
+        System.out.println("Hello"); // Test: When a container initializes, we will see "Hello" on the console if scope is Singleton and @Lazy annotation is not used.
+                                     // @Lazy only applies to singletons.
     }
 
     public void publishComment(Comment comment){

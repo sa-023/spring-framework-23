@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!-- Fragments are reusable, common parts of the page. Like header, footer etc... -->
+
+<!-- Reusable fragment for "main-menu"-->
+<dev th:fragment="main-menu">
+  <a href="https://www.amazon.com">Amazon</a>
+</dev>
+
+<!-- Reusable fragment for "footer-menu"-->
+<p th:fragment="footer-menu">
+  <a href="privacy">Privacy</a>
+  <a href="term and conditions">Terms</a>
+</p>
+
+</body>
+</html>

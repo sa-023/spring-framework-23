@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+<!--  Changing the title of the app. Bringing the external values into view, "index.page.title" is a key that comes from messages.properties.  -->
+    <title th:text="#{index.page.title}">Title</title>
+</head>
+<body>
+
+<h2>Welcome to Register Page</h2>
+
+<!-- Display the value of model attributes with th:text ${attribute_key} -->
+<h2 th:text="${students.get(0).firstName}"></h2>
+<h2 th:text="${students.get(0).lastName}"></h2>
+
+<!-- Concatenation -->
+<h2 th:text="${'Welcome '+students.get(0).firstName}"></h2>
+
+<!-- Link : Absolute URLs are used to build link that pointed to other servers -->
+<a th:href="@{https://www.amazon.com}">Amazon Home Page</a><br>
+<!-- Link : Relative URLs starting with / will be automatically prefixed by the application context name -->
+<a th:href="@{/student/welcome}">link1</a><br>
+
+<!-- Adding parameters to the link -->
+<a th:href="@{/student/welcome(id=3)}">Query Param1</a><br>
+<a th:href="@{/student/welcome(id=${students.get(0).firstName})}">Query Param2</a><br>
+
+<!-- Iteration with th:each -->
+<ul>
+    <li th:each="i: ${students}" th:text="${i.firstName}"></li>
+</ul>
+
+<!-- Conditional logic: The ? is used to render text within an HTML element depending on the current state of a variable. -->
+<div th:text="${students.get(0).age > 25 ? 'ELIGIBLE' : 'NOT ELIGIBLE'}"></div>
+<div> <!-- Conditional logic: The th:if and th:unless attributes is used to render an HTML element depending on a provided condition. -->
+    <span th:if="${students.get(0).getState() == 'Arizona'}">Arizona</span>
+    <span th:unless="${students.get(0).getState() == 'Arizona'}">Not Arizona</span>
+</div>
+
+
+</body>
+</html>

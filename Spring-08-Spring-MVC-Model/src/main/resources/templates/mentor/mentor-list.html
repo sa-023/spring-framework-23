@@ -17,7 +17,7 @@
     </thead>
 
     <tbody> <!-- Table body -->
-    <tr th:each="mentor : ${mentors}">
+    <tr th:each="mentor : ${mentors}"> <!-- Iteration of the list -->
         <td th:text="${mentor.firstName}"></td>
         <td th:text="${mentor.lastName}"></td>
         <td th:text="${mentor.age}"></td>

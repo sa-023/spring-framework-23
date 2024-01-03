@@ -1,0 +1,107 @@
+
+· A database is an organized collection of data, so it can be easily accessed and managed.
+
+🔺 Database management system
+· DBMS is a software whose responsibility is to allow you efficiently manage persisted data (add, change, retrieve data) while keeping it secure.
+· DBMS manages the data in database.
+🔺 Relational Database management system
+· RDBMS, has a structure which allows the users to identify and access data in relation to another piece of data in the database.
+· In this type of DBMS, the data is stored in the form of tables.
+
+🔺 Data Source
+· Essential component that Spring App needs so it can access a database
+· The data source is a component that manages connections to the server handling the database (database management system, DBMS)
+· App Logic (uses ->) Data Source (uses ->) JDBC Driver (uses ->) DBMS.
+                            ↓
+               It provides the app with connections
+               when it requested and makes sure to
+               create new connections only when it is necessary
+· For Java apps, there are multiple choices for data source implementations.
+· Most commonly used today is the HikariCP (Hikari connection pool) data source.
+· Spring Boot also considers HikariCP as the default data source implementation to be used.
+
+🔺 JDBC(Java Database Connectivity)
+· In the Java app, the language’s set capabilities to connect to a relational database is named JDBC.
+· JDBC offers you a way to connect to a DBMS to work with a database.
+· JDK does not provide a specific implementation for working with particular technology (such as MySQL, Postgres).
+· JDK only provides the abstractions for object an app needs to work with a relational database.
+· To gain the implementation of this abstraction and enable your app to connect to a certain DBMS technology, you add a runtime dependency named the JDBC driver.
+🔺 JDBC Driver
+· Every technology vendor provides the JDBC driver you need to add to your app to enable it to connect to that specific technology. So the
+  JDBC driver is not something that comes either from the JDK or from a framework such as Spring.
+· App (uses ->) JDBC abstractions from the JDK (<- implements) JDBC Driver (connects ->) DBMS.
+                  java.sql.Connection                         Implementations specific to a
+                  java.sql.ResultSet                          relational database technology
+                  java.sql.Statement
+
+
+🔺 What is a Transaction?
+· A transaction is a defined set of mutable operations (operations that change data) that can either correctly execute altogether or none of them execute.
+· Transactions are essential in apps because they ensure the data remains consistent if any step of the use case fails when the app already changed data.
+· Transferring money functionality consisting of two steps:
+1 - Withdraw money from the source account
+2 - Deposit money into the destination account
+· We can start a transaction before step 1 and close the transaction after step 2. If both steps successfully execute, when the transaction
+  ends, the app persists the changes made by both steps. We also say, in this case, that transaction “commits”.
+· If step 1 executes without a problem, but step 2 fails for any reason, the app reverts the changes step 1 made. The app restores the data
+  to how it was at the transaction start. This operation is named “rollback”.
+
+🔺 Transactions in Spring
+· To mark a method we want Spring to wrap in a transaction, we use annotation named @Transactional.
+· Behind the scenes, Spring configures an aspect and applies the transaction logic for the operations executed by that method.
+· The @Transactional annotation can also be applied to the class. If used on the class, the annotation applies to all the class methods.
+
+🔺 Spring Template
+· Your app can use a data source to obtain connections to the database server efficiently. But how easily can you write code to work with the data?
+· Directly using JDBC classes provided by the JDK has proved not to be a comfortable way to work with the persisted data.
+  You have to write verbose blocks of code, even for the simplest operations.
+· App Logic (uses ->) Spring JDBC Template -> JDBC Driver -> DBMS.
+                            ↑ (implements)
+                        Data Source
+· JDBC is not the only approach you can use to connect to a relational database.
+· Another common way to implement data persistence is using an Object Relational Mapping(ORM) Framework.
+
+🔺 ORM (Object Relational Mapping)
+· ORM is a programming technique for converting data between relational database and object oriented programming languages.
+· Java Class (Entity) ←→ ORM ←→  Database Table
+· ORM Frameworks: Hibernate, iBatis / MyBatis, TopLink
+🔺 What is Hibernate?
+· It is an open source framework for saving Java Objects in a database.
+· Spring APP can use JDBC directly, or an ORM framework such as Hibernate.
+· Hibernate is an ORM persistence framework that relies on JDBC and simplifies some aspects of working with persisted data.
+
+🔺 JPA(Java Persistence API)
+· JPA is not a tool or framework.
+· It defines a set of concepts that can be implemented by any tool or framework.
+· JPA’s object relational mapping model is originally based on Hibernate.
+· As JPA is just a specification, it does not perform any operation by itself. It requires an implementation.
+  So, ORM tools like Hibernate, TopLink, and iBatis implements JPA specifications for data persistence.
+· Application Architecture Flow: Client -> Service Layer -> Repository Level (Hibernate) -> Database.
+
+🔺 Spring Data
+· Spring Data is a Spring ecosystem project that simplifies the persistence layer’s development by providing implementations according to the persistence technology we use.
+· Spring data lets you access data from a variety of data sources (relational and non-relational databases).
+· It is an umbrella project under the Spring Framework that contains several subprojects each of which targets a specific database.
+· Spring Data provides a Repository abstraction layer across the supported databases as a common programming model. The abstraction is contained
+  in the Spring Data Commons module and it provides several useful interfaces that let you perform the standard CRUD operations as well as executing queries.
+🔺 Spring Data Modules
+Spring Data Commons: It contains the foundational components used in all Spring Data projects
+Spring Data JDBC: This module provides repository support for JDBC
+Spring Data JPA: It provides repository support for JPA
+Spring Data MongoDB: It provides support for document-based MongoDB database
+Spring Data REST: It lets you access Spring data repositories at REST resources
+Spring Data for Apache Cassandra: This module provides the necessary support for ApacheCassandra
+
+🔺 Configuring a Database
+· To configure a relational database with Spring Boot, we can add spring-boot-starter-data-jpa and the relational database driver
+  dependency in the pom.xml of the spring boot application.
+
+🔺 Configuration / Setting Properties
+Spring Boot application contains an application.properties file that let us configure database properties.
+
+🔺 Initializing a Database
+· Before we start accessing the database, we need to ensure the database schema is initialized properly.
+· Spring Boot lets us initialize a database schema with built-in solutions as well as third-party libraries(ORM)
+· We can initialize the database using Spring’s built-in schema2.sql and data.sql
+· The schema is only initialized by default for embedded datasources. To allow loading data for all types of data sources,
+  we need to set the following property: spring.sql.init.mode=always

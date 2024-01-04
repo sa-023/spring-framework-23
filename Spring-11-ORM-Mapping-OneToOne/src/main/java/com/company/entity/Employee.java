@@ -53,8 +53,8 @@ public class Employee extends BaseEntity{
 //    @OneToOne(cascade = {CascadeType.PERSIST,CascadeType.REMOVE})
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "department_id")
-
     private Department department;
+
     @OneToOne(cascade = CascadeType.ALL)
     private Region region;
 

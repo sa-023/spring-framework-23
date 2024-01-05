@@ -4,13 +4,16 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 import javax.persistence.*;
 /*
- * 🌀 Fetch Types:
- * · "fetch = FetchType.LAZY": It will prevent hibernate load all the info from the respective table.
- *    Lazy initialization improves performance by avoiding unnecessary computation and reduce memory requirements.
- * · "fetch = FetchType.EAGER": It will bring all the info from the respective table. This might cause a performance issue.
- *    Eager initialization takes more memory consumption and processing speed is slow.
- * · Ex: @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
- *       private List<Payment> paymentList;
+ * 🦋 Fetch Types:
+ * · LAZY: Fetch when needed. Ex: @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
+ *   Lazy initialization improves performance by avoiding unnecessary computation and reduce memory requirements.
+ * · EAGER: Fetch immediately Ex: @OneToMany(mappedBy = "customer", fetch = FetchType.EAGER)
+ *   Eager initialization takes more memory consumption and processing speed is slow.
+ * · Default Fetch Types:
+ * 1. @OneToOne: FetchType.EAGER
+ * 2. @OneToMany: FetchType.LAZY
+ * 3. @ManyToOne: FetchType.EAGER
+ * 4. @ManyToMany: FetchType.LAZY
  * 🖍️...
  * · For example, we only need payment-related information, but the payment class has a merchant object as well. So, when the application starts,
  *   Hibernate will load all the fields and related data in the payment class, which can cause potential performance issues. To prevent that,

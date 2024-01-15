@@ -16,16 +16,21 @@ import reactor.core.publisher.Mono;
  * · Synchronous (single-thread): is a blocking architecture, so the execution of each operation depends on completing the one before it.
  *   Each task requires an answer before moving on to the next iteration.
  * · Asynchronous (multi-thread): is a non-blocking architecture, so the execution of one task isn’t dependent on another. Tasks can run simultaneously.
+ *
  * 🔍 Spring WebFlux
- * · Spring WebFlux is a counterpart module for Spring MVC. Where Spring MVC implements synchronous, blocking I/O,
- *   Spring WebFlux implements reactive programming via Reactive Streams.
+ * · Spring WebFlux is a reactive web framework for building non-blocking, event-driven web applications.
+ * · It is a counterpart module for Spring MVC. Where Spring MVC implements synchronous, blocking I/O, Spring WebFlux implements reactive programming via Reactive Streams.
  * · Reactive programming is a programming paradigm where the focus is on developing asynchronous and non-blocking components.
+ * · It provides two main types of reactive streams, Mono and Flux, which are used to represent a single value and a stream of values respectively.
+ *
  * 🔍 Mono and Flux
+ * · Mono and Flux are used for processing asynchronous data.
  * · In Spring WebFlux, the data returned from any operation is packed into a reactive stream. There are two types that
  *   embody this approach and are building blocks in WebFlux applications - Mono and Flux.
  * · Mono is a stream which returns zero items or a single item (0…1), whereas Flux is a stream which returns zero or more items (0…N).
  * · Mono is therefore used when you’re expecting a single (or none) result, such as retrieving a unique user from database,
  *   whereas Flux is used when you’re expecting multiple results or a collection of some sort.
+ *
  *
  *
  * 🔺 Spring WebClient

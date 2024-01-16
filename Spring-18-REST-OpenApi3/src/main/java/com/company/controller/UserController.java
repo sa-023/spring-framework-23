@@ -14,6 +14,7 @@ import java.util.List;
  * 🦋 OpenAPI Specification (OAS)
  * · The OpenAPI Specification(OAS), is the world’s standard for defining RESTful interfaces.
  * · The OAS enables developers to design a technology-agnostic API interface that forms the basis of their API development and consumption.
+ * · Open API specifications can be created in YAML and JSON formats.
  *
  * 🦋 Swagger
  * · Swagger is the name associated with some of the most well-known, and widely used tools for implementing the OpenAPI specification.
@@ -24,16 +25,18 @@ import java.util.List;
  * 2. We can add the springdoc-openapi-ui dependency to the pom.xml file to automate the generation of Spring-based REST APIs in OpenAPI 3.0 format.
  *    2.1. Run our application and find the OpenAPI descriptions at /v3/api-docs, which is the default path: http://localhost:8080/v3/api-docs
  *         We can customize the path in application.properties: springdoc.api-docs.path=/api-docs
- * 🖍️... The OpenAPI definitions are in JSON format by default. For yaml format, we can obtain the definitions at: http://localhost:8080/api-docs.yaml
+ *        🖍️...
+ *        · The OpenAPI definitions are in JSON format by default. For yaml format, we can obtain the definitions at: http://localhost:8080/api-docs.yaml
+ *        · We use JSON-viewer Chrome extension to automatically format and syntax highlight JSON responses and files in browser tabs.
  *    2.2. Integration with Swagger UI: http://localhost:8080/swagger-ui/index.html (or /swagger-ui.html)
  *         We can customize the path in application.properties: springdoc.swagger-ui.path=/swagger-custom.html
  *    2.3. If we would like to modify our swagger documentation, we should add customOpenApi @Bean to the main class. And add annotations to controller methods.
- * 🖍️...
- * · @Tag(name = "User", description = "User CRUD Operations"): By default, the name for the group of endpoints is user-controller.
- *   We can change it to User (with description) using @Tag annotation.
- * · @Operation(summary = "Read all users", description = "List of All Users"): A summary adds a description of the endpoint, and a description adds extra details.
- * · @ApiResponse(): Adds a single value.
- * · @ApiResponses(value={@ApiResponse(responseCode = "200"), @ApiResponse(responseCode = "400") }): Adds multiple values
+ *         🖍️...
+ *         · @Tag(name = "User", description = "User CRUD Operations"): By default, the name for the group of endpoints is user-controller.
+ *           We can change it to User (with description) using @Tag annotation.
+ *         · @Operation(summary = "Read all users", description = "List of All Users"): A summary adds a description of the endpoint, and a description adds extra details.
+ *         · @ApiResponse(): Adds a single value.
+ *         · @ApiResponses(value={@ApiResponse(responseCode = "200"), @ApiResponse(responseCode = "400") }): Adds multiple values
  *
  */
 @RestController

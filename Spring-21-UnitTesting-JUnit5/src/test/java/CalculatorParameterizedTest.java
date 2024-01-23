@@ -54,7 +54,7 @@ import org.junit.jupiter.params.provider.*;
  *
  * 🦋 Assertions
  * · assertTrue(); asserts that the supplied condition is true or boolean condition supplied by BooleanSupplier is true.
- * · .assertArrayEquals(); It is used to verify if the two arrays are equals.
+ * · assertArrayEquals(); It is used to verify if the two arrays are equals.
  * · assertNotNull(); method asserts that actual is NOT null.
  * · assertNull(); method asserts that actual is null.
  * · assertNotSame(); asserts that expected and actual DO NOT refer to the same object.

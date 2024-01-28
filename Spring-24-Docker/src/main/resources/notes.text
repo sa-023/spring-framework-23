@@ -1,0 +1,121 @@
+/*
+ * 🦋 Operating System (OS)
+ * · It is a program that acts as an interface between the computer user and computer hardware, and controls the execution of programs.
+ * · It manages the computer's memory and processes, as well as all of its software and hardware.
+ * · Kernel: It is the core component of an operating system that converts user commands into machine language.
+ *
+ * 🦋 Virtual Machines(VM)
+ * · It is the emulation of a physical computer inside a host machine.
+ * · Running on top of the host operating system is a piece of software called a hypervisor that controls the VM instances.
+ *   Each VM instance has its own guest operating system. The applications run inside this isolated environment.
+ * · You can have multiple VMs, each running a different application on a different operating system.
+ *
+ *    VM1        VM2        VM3        VM4
+ *     ↓          ↓          ↓          ↓
+ *  ⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤
+ * | App #1   |  App2 #2 | App #3   | App #4   |
+ * | Bins/Libs| Bins/Libs| Bins/Libs| Bins/Libs|
+ * | Guest OS | Guest OS | Guest OS | Guest OS |
+ *  ⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤
+ *      Virtualization Software (Hypervisor)
+ *            Host Operating System
+ *              Physical Hardware
+ *
+ * 🦋 Docker
+ * · Docker is an open platform for developing, shipping, and running applications.
+ * · Docker is a software platform that allows you to build, test, and deploy applications quickly.
+ * · Docker packages software into standardized units called containers that have everything the software needs to run including libraries, system tools, code, and runtime.
+ * · Using Docker, you can quickly deploy and scale applications into any environment and know your code will run.
+ * · It’s open source Linux software, which means that anyone can contribute to it.
+ *
+ *  Container1 Container2 Container3 Container4
+ *       ↓           ↓         ↓         ↓
+ *  ⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤
+ * | App #1   |  App2 #2 | App #3   | App #4   |
+ * | Bins/Libs| Bins/Libs| Bins/Libs| Bins/Libs|
+ *  ⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤
+ *          Docker (Container Engine)
+ *            Host Operating System
+ *              Physical Hardware
+ *
+ * 🖍️...
+ * · Docker uses a client-server architecture. The Docker client talks to the Docker daemon, which does the heavy lifting
+ *   of building, running, and distributing your Docker containers.
+ *
+ * 🔺 Docker consists of three major components:
+ * · The Docker Engine, a runtime environment for containers.
+ * · The Docker command line client, used to interact with the Docker Engine.
+ * · The Docker Hub, a cloud service that provides registry and repository services for Docker images.
+ *
+ * 🔎 Docker Image:
+ * · It is a read-only template with instructions for creating a Docker container.
+ * · It contains the source code, libraries, dependencies, tools, and other files needed for an application to run. (Application1 -> Libraries, Java, U/I-GUI).
+ * · Docker images are built using the Dockerfile which consists of a set of instructions that are required to containerize an application.
+ * · Docker images also act as the starting point when using Docker.
+ * · It allows developers to test and experiment software in stable, uniform conditions.
+ *
+ * 🔎 Docker Container:
+ * · A container is an isolated environment for your code. This means that a container has no knowledge of your operating system, or your files.
+ * · It runs on the environment provided to you by Docker Desktop.
+ * · Containers have everything that your code needs in order to run, down to a base operating system.
+ * · A Docker container is a live running instance of a Docker image.
+ *
+ * 🔎 Docker Engine
+ * · It is the part of Docker which creates and runs Docker containers.
+ * · It consists of three major components:
+ * 1. Client Docker CLI: It allows users to make requests, e.g., create images & containers.
+ * 2. Rest API: It communicates all requests and information to the Docker daemon.
+ * 3. Server Docker Daemon: It does all the processing of all the Docker processes.
+ *
+ * 🌀 Dockerfile
+ * · It is a script that describes steps for Docker to take to build a new image.
+ * · The Docker image builder executes the Dockerfile from top to bottom, and the instructions can configure or change anything about an image.
+ *
+ * 🔺❗️ How to Use Docker
+ * 0. Install Docker Desktop: It provides the basic Linux operating system, which is also included in the Docker engine.
+ * 1. Create a "Dockerfile" in the root directory of the application.
+ * 2. Run the "docker build -t company/test1 ." command to create a Docker image. (Run this command in the directory where the Docker file is located.)
+ * 3. To push the Docker image to Dockerhub, we should run the "docker push company/test1" command. (company/test1: "company" is the DockerhubID, and "test1" is the image name.)
+ * 4. Run the following command to create and runs a container from the provided image: "docker container run -d -p 8080:8080 DockerImageID".
+ * 5. Go to the browser and execute "localhost:8080," and you should see the application.
+ *
+ * 🌀 Naming Docker Images: docker.io/company/ticketing:latest
+ * · docker.io : Registry URL
+ * · company : DockerHub ID
+ * · ticketing: Image Name
+ * · latest: Tag
+ * · company/ticketing : Repository
+ *
+ * 📌 Recap:
+ * · Docker File creates a Docker image using the build command.
+ * · A Docker image contains all the project's code.
+ * · Using Docker images, any user can run the code in order to create Docker containers.
+ * · Once a Docker image is built, it's uploaded to a registry or a Docker Hub (so it can be shared by the entire team).
+ * · From the Docker Hub, users can get Docker images and build new containers.
+ *
+ * 🟦 Docker Commands
+ * 🔎 Other Docker Related Commands:
+ * · docker version :
+ * · docker --version : Will display the version of docker.
+ * · docker logs containerID : Check all the logs.
+ * · docker compose up
+ *🔎 Docker Image Related Commands:
+ * · docker image --help : Will display docker image related commands.
+ * · docker image pull company/ticketing : Will return the provided docker image.
+ * · docker image ls : Will display all the docker images.
+ * · docker image rm imageName1, imageName2, ets.. : Will remove the images
+ * 🔎 Docker Container Related Commands
+ * · docker ps :  Will display running containers.
+ * · docker ps -a : Will display all the containers.
+ * · control+C : Will terminate the running container
+ * · docker container prune : It will delete all the containers except the running one.
+ * · docker container stop containerID : Will stop (excited) the docker container
+ * · docker container rm containerID : Will delete the container, but the container must be stopped first.
+ * · docker container rm -f containerID : Will force to remove container even if it is still up, without stop command.
+ * · docker container run imageID : It can be repository name or image ID (first 3 numbers). Ex: 7b4
+ * · docker container run -d -p 8080:8080 imageID : It creates a new container and will publish the port. (Then we can go to localhost:8080, and we will see our application.)
+ * · docker container run -d -p 8080:8080 company/ticketing : If Docker does not find the image on the local machine, it will first download the image from DockerHub, and then it will add it inside the container.
+ *
+ *
+ *
+ */
